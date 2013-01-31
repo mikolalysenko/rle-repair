@@ -15,7 +15,7 @@ You can import the repair module like so:
 
     var repair = require("rle-repair");
 
-And it gives you the following methods:
+All the repair methods work on VolumeBuilder objects.  If you give them a regular volume, they will fail.
 
 `repair.resort(volume)`
 -----------------------
