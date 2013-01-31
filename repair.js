@@ -29,7 +29,6 @@ function deleteIndices(array, dead_runs) {
       array[ptr++] = array[j];
     }
   }
-  //Resize buffer
   array.length = array.length - dead_runs.length;
 }
 
