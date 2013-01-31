@@ -1,0 +1,23 @@
+{
+  "name": "rle-repair",
+  "version": "0.0.0",
+  "description": "RLE repair",
+  "main": "repair.js",
+  "scripts": {
+  },
+  "dependencies": {
+    "rle-core": "*",
+    "rle-stencils": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mikolalysenko/rle-repair.git"
+  },
+  "keywords": [
+    "rle"
+  ],
+  "author": "Mikola Lysenko",
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "gitHead": "2cda1d1516393f0a009466a5b37d6a873162a39b"
+}

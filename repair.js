@@ -1,16 +1,21 @@
 "use strict"; "use restrict";
 
-var misc = require("./misc.js");
-var CROSS_STENCIL = misc.CROSS_STENCIL;
-var createStencil = require("./stencil_iterator.js").createStencil;
+var rle       = require("rle-core");
+var stencils  = require("rle-stencils");
+
+var CROSS_STENCIL = stencils.CROSS_STENCIL;
+var beginStencil  = rle.beginStencil;
+
 
 //Reorders all runs
 exports.resort = function(volume) {
+  throw "Not implemented yet"
 }
 
 
 //Adds missing surface runs
 exports.resurface = function(volume) {
+  throw "Not implemented yet"
 }
 
 //Remove old indices
@@ -29,13 +34,13 @@ function deleteIndices(array, dead_runs) {
 }
 
 //Clean up redundant runs
-exports.cleanup = function(volume) {
+exports.removeDuplicates = function(volume) {
   var dead_runs   = []
     , vcoords     = volume.coords
     , vdistances  = volume.distances
     , vphases     = volume.phases;
   //Skip first run
-  var iter    = createStencil(volume, CROSS_STENCIL)
+  var iter    = beginStencil(volume, CROSS_STENCIL)
     , icoord  = iter.coord
     , ptrs    = iter.ptrs;
   iter.next();
@@ -70,5 +75,5 @@ outer_loop:
 exports.fullRepair = function(volume) {
   resort(volume):
   resurface(volume);
-  removeConstant(volume);
+  removeDuplicates(volume);
 }
