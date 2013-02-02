@@ -6,16 +6,33 @@ var stencils  = require("rle-stencils");
 var CROSS_STENCIL = stencils.CROSS_STENCIL;
 var beginStencil  = rle.beginStencil;
 
-
-//Reorders all runs
+//Reorders all runs to lexicographic order
 exports.resort = function(volume) {
-  throw "Not implemented yet"
+  var coords    = volume.coords
+    , phases    = volume.phases
+    , distances = volume.distances;
+    , length    = volume.length()
+    , perm      = new Array(volume.length);
+  for(var i=0; i<volume.length(); ++i) {
+    perm[i] = [ coords[0][i], coords[1][i], coords[2][i], distances[i], phases[i] ];
+  }
+  perm.sort(rle.compareCoord);
+  for(var i=0; i<volume.length; ++i) {
+    var run = perm[i];
+    coords[0][i] = run[0];
+    coords[1][i] = run[1];
+    coords[2][i] = run[2];
+    distances[i] = run[3];
+    phases[i]    = run[4];
+  }
+  return volume;
 }
 
 
 //Adds missing surface runs
 exports.resurface = function(volume) {
-  throw "Not implemented yet"
+  //TODO: Not implemented yet
+  return volume;
 }
 
 //Remove old indices
@@ -72,7 +89,7 @@ outer_loop:
 }
 
 exports.fullRepair = function(volume) {
-  resort(volume):
-  resurface(volume);
-  removeDuplicates(volume);
+  exports.resort(volume);
+  exports.resurface(volume);
+  exports.removeDuplicates(volume);
 }
