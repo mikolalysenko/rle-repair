@@ -1,13 +1,13 @@
 {
   "name": "rle-repair",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "RLE repair",
   "main": "repair.js",
   "scripts": {
   },
   "dependencies": {
-    "rle-core": "*",
-    "rle-stencils": "*"
+    "rle-core": "0.0.*",
+    "rle-stencils": "0.0.*"
   },
   "repository": {
     "type": "git",

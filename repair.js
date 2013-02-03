@@ -1,16 +1,16 @@
 "use strict"; "use restrict";
 
-var rle       = require("rle-core");
+var core      = require("rle-core");
 var stencils  = require("rle-stencils");
 
 var CROSS_STENCIL = stencils.CROSS_STENCIL;
-var beginStencil  = rle.beginStencil;
+var beginStencil  = core.beginStencil;
 
 //Reorders all runs to lexicographic order
 exports.resort = function(volume) {
   var coords    = volume.coords
     , phases    = volume.phases
-    , distances = volume.distances;
+    , distances = volume.distances
     , length    = volume.length()
     , perm      = new Array(volume.length);
   for(var i=0; i<volume.length(); ++i) {
@@ -86,6 +86,7 @@ outer_loop:
     deleteIndices(vdistances, dead_runs);
     deleteIndices(vphases, dead_runs);
   }
+  return volume;
 }
 
 exports.fullRepair = function(volume) {
